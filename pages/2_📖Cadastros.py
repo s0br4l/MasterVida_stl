@@ -5,7 +5,7 @@ import streamlit as st
 from PIL import Image
 import pandas as pd
 
-st.set_page_config(page_title="Cadastros", page_icon=None, layout="centered", initial_sidebar_state="collapsed", menu_items=None)
+st.set_page_config(page_title="Cadastros", page_icon='images/add_user_dark_.ico', layout="centered", initial_sidebar_state="collapsed", menu_items=None)
 
 container1 = st.container()
 container1.image(Image.open('images/large_master_image_cadastros.png'))
