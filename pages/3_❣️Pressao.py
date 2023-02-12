@@ -19,7 +19,7 @@ container_pre = tabpre.container()
 dataselecionada_pre = tabpre.date_input('Filtrar por data', key='data select pre')
 container_pre.dataframe(registros.loc[registros['data'] == str(dataselecionada_pre)][['data', 'nome',
                                                                 'pre_pas1', 'pre_pad1', 'pre_pas2',
-                                                                'pre_pad2', 'pre_pas3', 'pre_pad3']])
+                                                                'pre_pad2', 'pre_pas3', 'pre_pad3']], use_container_width=True)
 
 
 container3 = tabpre.container()
@@ -85,7 +85,7 @@ container_pos = tabpos.container()
 dataselecionada_pos = tabpos.date_input('Filtrar por data', key='data select pos')
 container_pos.dataframe(registros.loc[registros['data'] == str(dataselecionada_pos)][['data', 'nome',
                                                                 'pos_pas1', 'pos_pad1', 'pos_pas2',
-                                                                'pos_pad2', 'pos_pas3', 'pos_pad3']])
+                                                                'pos_pad2', 'pos_pas3', 'pos_pad3']], use_container_width=True)
 
 
 container4 = tabpos.container()

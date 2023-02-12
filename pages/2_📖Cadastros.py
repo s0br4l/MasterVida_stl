@@ -1,6 +1,5 @@
 import datetime
 import string
-
 import streamlit as st
 from PIL import Image
 import pandas as pd
@@ -14,7 +13,7 @@ cadastros = pd.read_excel('tables/cadastros.xlsx', index_col=0)
 listanomes_geral = cadastros['nome'].unique().astype(str)
 
 container2 = st.container()
-container2.dataframe(cadastros)
+container2.dataframe(cadastros, use_container_width=True)
 
 container3 = st.container()
 adduser_exp = container3.expander('Adicionar usuário')
