@@ -9,7 +9,7 @@ st.set_page_config(page_title="Cadastros", page_icon='images/add_user_dark_.ico'
 container1 = st.container()
 container1.image(Image.open('images/large_master_image_cadastros.png'))
 
-cadastros = pd.read_excel('tables/cadastros.xlsx', index_col=0)
+cadastros = pd.read_excel('tables/cadastros.xlsx', index_col=0).dropna()
 listanomes_geral = cadastros['nome'].unique().astype(str)
 
 container2 = st.container()
@@ -123,8 +123,6 @@ if not hipertensao_check:
     hipertensao_updt = colhipertensaoupdate.selectbox('Tem hipertensao atualizada', [' ', 'HAS'], disabled=True)
     cadastros.loc[cadastros['nome'] == update_nome, 'hipertensao'] = hipertensao_ant_value
 
-
-print(cadastros.loc[cadastros['nome'] == update_nome])
 
 def salvaratualizacao():
     with pd.ExcelWriter('tables/cadastros.xlsx') as writer:

@@ -8,7 +8,7 @@ st.set_page_config(page_title="Registros Pressão Arterial", page_icon='images/b
 container1 = st.container()
 container1.image(Image.open('images/large_master_image_pressao.png'))
 
-cadastros = pd.read_excel('tables/cadastros.xlsx', index_col=0)
+cadastros = pd.read_excel('tables/cadastros.xlsx', index_col=0).dropna()
 listanomes_geral = cadastros['nome'].unique().astype(str)
 registros = pd.read_excel('tables/reg_semanais.xlsx', index_col=0)
 
