@@ -31,7 +31,7 @@ turmapilts_add = adduser.selectbox('Turma Pilates', [' ', 'PL7h', 'PL8h'])
 exames_add = adduser.date_input('Validade dos exames', min_value=datetime.date.today())
 diabetes_add = adduser.selectbox('Tem diabetes?', [' ', 'DIB'])
 hipertensao_add = adduser.selectbox('Tem hipertensao?', [' ', 'HAS'])
-foto_add = adduser.file_uploader('Selecionar foto', type=['jpg', 'png'])
+foto_add = adduser.file_uploader('Selecionar foto', type=['jpg', 'png', 'jpeg'])
 
 nome_cadastro = string.capwords(nome_add, sep=None)
 nome_id_cadastro = str(nome_id_add)
@@ -100,13 +100,13 @@ colfotocheck, colfotoupdate, colupdtprvw = updateuser.columns([0.1, 2.5, 1], gap
 foto_label = colfotocheck.markdown('~')
 foto_check = colfotocheck.checkbox(' ', key='foto att')
 if foto_check:
-    foto_updt = colfotoupdate.file_uploader('Selecionar foto para atualizar', type=['jpg', 'png'], key='foto updt')
+    foto_updt = colfotoupdate.file_uploader('Selecionar foto para atualizar', type=['jpg', 'png', 'jpeg'], key='foto updt')
     if foto_updt:
         with Image.open(foto_updt) as im:
             im3 = im.resize((500, 500))
             colupdtprvw.image(im3, width=100, caption='Foto atualizada')
 if not foto_check:
-    foto_updt = colfotoupdate.file_uploader('Selecionar foto', type=['jpg', 'png'], key='foto updt', disabled=True)
+    foto_updt = colfotoupdate.file_uploader('Selecionar foto', type=['jpg', 'png', 'jpeg'], key='foto updt', disabled=True)
     update_nome_foto = f'foto_{nome_id_value}'
     with Image.open(f'cad_images/{update_nome_foto}.png') as im:
         im3 = im.resize((500, 500))
@@ -163,7 +163,7 @@ exames_label = colexamescheck.markdown('~')
 exames_check = colexamescheck.checkbox(' ', key='exames')
 exames_ant = colexamesant.text_input('Validade atual', value=exames_ant_value, disabled=True)
 if exames_check:
-    exames_updt = colexamesupdate.date_input('Validade atualizada', min_value=datetime.date.today())
+    exames_updt = colexamesupdate.date_input('Validade atualizada')
     cadastros.loc[cadastros['nome'] == update_nome, 'exames'] = exames_updt.strftime("%d/%m/%y")
 if not exames_check:
     exames_updt = colexamesupdate.date_input('Validade atualizada', min_value=datetime.date.today(), disabled=True)
